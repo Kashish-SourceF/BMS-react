@@ -1,0 +1,1 @@
+import{j as s}from"./index-C4SpRYzF.js";function l(){return s.jsxs("div",{className:"p-8 text-center",children:[s.jsx("h1",{className:"text-3xl font-bold",children:"Library of All Books"}),s.jsx("p",{className:"mt-4",children:"This page will show all books (empty for now)."})]})}export{l as default};
