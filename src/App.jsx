@@ -13,10 +13,12 @@ function App() {
         <Header />
 
       <main className="flex-grow p-4 sm:p-6 container mx-auto">
-          <nav className="mb-6 flex gap-4">
+      <nav className="mb-6 flex gap-4">
             <Link to="/">Home</Link>
-            <Link to="/books"> Books</Link>
-          </nav>
+            <Link to="/books">Books</Link>
+            <Link to="/library">Library</Link>  {/* Add this */}
+      </nav>
+
 
           <Routes>
             <Route path="/" element={<HomePage/>} />

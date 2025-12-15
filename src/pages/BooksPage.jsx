@@ -1,53 +1,48 @@
-// src/pages/BooksPage.jsx
-import { useState, useReducer } from "react";
-import BookList from "../components/BookList";
+import { useEffect, useState } from "react";
 import BookForm from "../components/BookForm";
-
-// Reducer function
-function bookReducer(state, action) {
-  switch (action.type) {
-    case "ADD_BOOK":
-      return [...state, { id: Date.now(), ...action.payload }];
-    case "DELETE_BOOK":
-      return state.filter((book) => book.id !== action.payload);
-    case "EDIT_BOOK":
-      return state.map((book) =>
-        book.id === action.payload.id ? action.payload : book
-      );
-    default:
-      return state;
-  }
-}
+import BookList from "../components/BookList";
 
 export default function BooksPage() {
-  const [books, dispatch] = useReducer(bookReducer, []);
-  const [bookToEdit, setBookToEdit] = useState(null);
+  const [books, setBooks] = useState([]);
 
-  const addBook = (book) => {
-    dispatch({ type: "ADD_BOOK", payload: book });
+  // Fetch books from backend
+  const fetchBooks = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/books");
+      const data = await res.json();
+      setBooks(data);
+    } catch (err) {
+      console.error("Error fetching books:", err);
+    }
   };
 
-  const deleteBook = (id) => {
-    dispatch({ type: "DELETE_BOOK", payload: id });
+  // Load books on mount
+  useEffect(() => {
+    fetchBooks();
+  }, []);
+
+  // Add book → POST → refresh list
+  const addBook = async (newBook) => {
+    await fetch("http://localhost:3000/books", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newBook),
+    });
+    fetchBooks();
   };
 
-  const editBook = (updatedBook) => {
-    dispatch({ type: "EDIT_BOOK", payload: updatedBook });
-    setBookToEdit(null);
+  // Delete book → DELETE → refresh list
+  const deleteBook = async (id) => {
+    await fetch(`http://localhost:3000/books/${id}`, {
+      method: "DELETE",
+    });
+    fetchBooks();
   };
 
   return (
     <div className="p-6">
-      <BookForm
-        onAddBook={addBook}
-        onEditBook={editBook}
-        bookToEdit={bookToEdit}
-      />
-      <BookList
-        books={books}
-        onDeleteBook={deleteBook}
-        onEditBook={setBookToEdit}
-      />
+      <BookForm onAddBook={addBook} />
+      <BookList books={books} onDeleteBook={deleteBook} />
     </div>
   );
 }

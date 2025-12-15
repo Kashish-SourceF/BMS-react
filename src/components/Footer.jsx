@@ -4,9 +4,14 @@ function Footer() {
   return (
     <Box
       component="footer"
-      className="bg-gray-800 text-center py-4"
+      sx={{
+        bgcolor: "grey.900",
+        color: "grey.300",
+        textAlign: "center",
+        py: 2,
+      }}
     >
-      <Typography variant="body2" className="text-gray-300">
+      <Typography variant="body2">
         © {new Date().getFullYear()} Book Management System | All rights reserved
       </Typography>
     </Box>
