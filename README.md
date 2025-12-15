@@ -1,69 +1,36 @@
-# React + TypeScript + Vite
+# 📚 Book Management System (BMS)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React + Vite application to manage books with optimized performance, unit testing, and GitHub Pages documentation. Built as part of a 100-day project to practice React fundamentals, state management, and modern development workflows.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+- **Add, Edit, and Delete Books** using a clean, interactive interface.
+- **State Management with `useReducer`** for predictable updates.
+- **Performance Optimization**
+  - `React.memo` to prevent unnecessary re-renders.
+  - `useCallback` for stable handler references.
+  - Code-splitting with `React.lazy` and `<Suspense>` for faster initial load.
+- **Responsive UI** with Tailwind CSS and Material-UI components.
+- **Routing** with `react-router-dom` (`Home`, `Books`, and `Library` pages).
+- **Unit Testing** with Vitest and React Testing Library.
+- **Deployed Documentation** on GitHub Pages.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠 Tech Stack
+| Category          | Tools/Frameworks                |
+|-------------------|---------------------------------|
+| **Frontend**      | React 18, Vite, TypeScript      |
+| **Styling**       | Tailwind CSS, Material-UI (MUI) |
+| **Routing**       | React Router DOM v6             |
+| **Testing**       | Vitest, React Testing Library    |
+| **Docs Hosting**   | GitHub Pages                    |
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📦 Installation & Setup
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/<your-username>/<your-repo>.git
+   cd <your-repo>

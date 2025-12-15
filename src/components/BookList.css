@@ -1,0 +1,28 @@
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.book-table th,
+.book-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.book-table th {
+  background: #e5e7eb;
+}
+
+.delete-btn {
+  padding: 6px 12px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
